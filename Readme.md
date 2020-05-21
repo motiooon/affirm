@@ -2,9 +2,9 @@
 
 ---
 
-#### Installation and Running the Code:
+#### Installation for running the code:
 
-```js
+```shell script
     npm install
     node index.js
 ```
@@ -13,7 +13,7 @@ After that the 2 CSV files will be added to the root folder of the program.
 
 ----
 
-#### Answers to questions
+#### Answers to questions:
 
 1. How long did you spend working on the problem? What did you find to be the most difficult part?
 > Took me ~6 hours. I did not track time precisely but this is the ballpark. It would have taken me more, if I had written unit tests or further optimize on time complexity of the code. Most time went into parsing CSVs, massaging/transforming data, cleaning up code.
