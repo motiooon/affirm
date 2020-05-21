@@ -1,0 +1,21 @@
+{
+  "name": "affirm",
+  "version": "1.0.0",
+  "description": "affirm's coding challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard && npm run test"
+  },
+  "author": "Gabriel Baciu",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.1",
+    "jest": "^26.0.1",
+    "standard": "^14.3.4"
+  },
+  "dependencies": {
+    "csv-parser": "^2.3.2",
+    "csv-writer": "^1.6.0"
+  }
+}
