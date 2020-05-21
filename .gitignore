@@ -1,3 +1,5 @@
 /node_modules
 yields.csv
 assignments.csv
+.idea/
+package-lock.json

@@ -69,30 +69,16 @@ function calculateYield (loan, facility) {
          (fir * amount)
 }
 
-function writeOutput (loansToFacilities, facilitiesYieldList) {
-  const loansWriter = createCsvWriter({
-    path: 'assignments.csv',
-    header: [
-      { id: 'loan_id', title: 'loan_id' },
-      { id: 'facility_id', title: 'facility_id' }
-    ]
-  })
-
-  const yieldsWriter = createCsvWriter({
-    path: 'yields.csv',
-    header: [
-      { id: 'facility_id', title: 'facility_id' },
-      { id: 'expected_yield', title: 'expected_yield' }
-    ]
-  })
-
-  loansWriter
-    .writeRecords(loansToFacilities)
-    .then(() => console.log('The assignments.csv file was written successfully'))
-
-  yieldsWriter
-    .writeRecords(facilitiesYieldList)
-    .then(() => console.log('The yields.csv file was written successfully'))
+/**
+ *
+ * @param params object
+ * @param data []object
+ */
+function writeOutput (params, data) {
+  const writer = createCsvWriter(params)
+  writer
+    .writeRecords(data)
+    .then(() => console.log(`The ${params.path} file was written successfully`))
 }
 
 ingestData(FACILITIES, COVENANTS, LOANS).then((data) => {
@@ -182,5 +168,23 @@ ingestData(FACILITIES, COVENANTS, LOANS).then((data) => {
   })
 
   // Write the 2 CSV files needed
-  writeOutput(loansToFacilities, facilitiesYieldList)
+
+  const loanParams = {
+    path: 'assignments.csv',
+    header: [
+      { id: 'loan_id', title: 'loan_id' },
+      { id: 'facility_id', title: 'facility_id' }
+    ]
+  }
+
+  const yieldParams = {
+    path: 'yields.csv',
+    header: [
+      { id: 'facility_id', title: 'facility_id' },
+      { id: 'expected_yield', title: 'expected_yield' }
+    ]
+  }
+
+  writeOutput(loanParams, loansToFacilities)
+  writeOutput(yieldParams, facilitiesYieldList)
 })
