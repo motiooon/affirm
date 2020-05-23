@@ -122,7 +122,7 @@ ingestData(FACILITIES, COVENANTS, LOANS).then((data) => {
 
       if (
         // facility still has money available to lend
-        Number(facility.amount) > Number(loan.amount) &&
+        Number(facility.amount) >= Number(loan.amount) &&
         // facility:covenant does not ban the loan state through covenant
         facilitiesMap[facility.id].bannedStates.indexOf(loan.state) === -1 &&
         // facility:covenant has higher max default than the current loan
@@ -163,7 +163,7 @@ ingestData(FACILITIES, COVENANTS, LOANS).then((data) => {
   Object.keys(facilitiesYield).forEach((value, index) => {
     facilitiesYieldList.push({
       facility_id: value,
-      expected_yield: Math.round(facilitiesYield[value].expectedYield)
+      expected_yield: facilitiesYield[value].expectedYield.toFixed(2)
     })
   })
 
